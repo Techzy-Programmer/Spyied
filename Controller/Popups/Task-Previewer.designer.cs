@@ -56,7 +56,7 @@ namespace Controller.Popups
             // 
             this.tcMain.ActiveTabFont = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold);
             this.tcMain.BackColor = System.Drawing.Color.White;
-            this.tcMain.BeforeTouchSize = new System.Drawing.Size(594, 445);
+            this.tcMain.BeforeTouchSize = new System.Drawing.Size(594, 441);
             this.tcMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tcMain.CloseButtonBackColor = System.Drawing.Color.Empty;
             this.tcMain.Controls.Add(this.tpOngoing);
@@ -67,7 +67,7 @@ namespace Controller.Popups
             this.tcMain.Location = new System.Drawing.Point(2, 2);
             this.tcMain.Name = "tcMain";
             this.tcMain.ShowToolTips = true;
-            this.tcMain.Size = new System.Drawing.Size(594, 445);
+            this.tcMain.Size = new System.Drawing.Size(594, 441);
             this.tcMain.TabIndex = 0;
             this.tcMain.TabStop = false;
             this.tcMain.TabStyle = typeof(Syncfusion.Windows.Forms.Tools.TabRendererDockingWhidbeyBeta);
@@ -83,7 +83,7 @@ namespace Controller.Popups
             this.tpOngoing.Location = new System.Drawing.Point(3, 41);
             this.tpOngoing.Name = "tpOngoing";
             this.tpOngoing.ShowCloseButton = true;
-            this.tpOngoing.Size = new System.Drawing.Size(588, 401);
+            this.tpOngoing.Size = new System.Drawing.Size(588, 397);
             this.tpOngoing.TabIndex = 3;
             this.tpOngoing.Text = "Ongoing (Active) Tasks";
             this.tpOngoing.ThemesEnabled = true;
@@ -134,7 +134,7 @@ namespace Controller.Popups
             this.dgATasks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgATasks.Location = new System.Drawing.Point(0, 0);
             this.dgATasks.Name = "dgATasks";
-            this.dgATasks.Size = new System.Drawing.Size(588, 401);
+            this.dgATasks.Size = new System.Drawing.Size(588, 397);
             this.dgATasks.Style.CellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
             this.dgATasks.Style.CellStyle.Font.Bold = true;
             this.dgATasks.Style.CellStyle.Font.Facename = "Palatino Linotype";
@@ -158,7 +158,7 @@ namespace Controller.Popups
             this.tpCompleted.Location = new System.Drawing.Point(3, 41);
             this.tpCompleted.Name = "tpCompleted";
             this.tpCompleted.ShowCloseButton = true;
-            this.tpCompleted.Size = new System.Drawing.Size(588, 403);
+            this.tpCompleted.Size = new System.Drawing.Size(588, 397);
             this.tpCompleted.TabIndex = 4;
             this.tpCompleted.Text = "Completed Tasks";
             this.tpCompleted.ThemesEnabled = true;
@@ -217,7 +217,7 @@ namespace Controller.Popups
             this.dgCTasks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgCTasks.Location = new System.Drawing.Point(0, 0);
             this.dgCTasks.Name = "dgCTasks";
-            this.dgCTasks.Size = new System.Drawing.Size(588, 403);
+            this.dgCTasks.Size = new System.Drawing.Size(588, 397);
             this.dgCTasks.Style.CellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
             this.dgCTasks.Style.CellStyle.Font.Bold = true;
             this.dgCTasks.Style.CellStyle.Font.Facename = "Palatino Linotype";
@@ -237,7 +237,7 @@ namespace Controller.Popups
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(222)))));
-            this.ClientSize = new System.Drawing.Size(598, 449);
+            this.ClientSize = new System.Drawing.Size(598, 445);
             this.Controls.Add(this.tcMain);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
