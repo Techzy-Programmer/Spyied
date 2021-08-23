@@ -1,0 +1,604 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Controller</RootNamespace>
+    <AssemblyName>Controller</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AllowedReferenceRelatedFileExtensions>
+			*.none
+	</AllowedReferenceRelatedFileExtensions>
+  </PropertyGroup>
+  <PropertyGroup>
+    <BaseIntermediateOutputPath>Bin\Temp-Obj\</BaseIntermediateOutputPath>
+    <IntermediateOutputPath>Bin\Temp-Obj\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>embedded</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Spyied-Logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Syncfusion.BulletGraph.Windows, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.BulletGraph.Windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Calculate.Base, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.Calculate.Base.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Chart.Base, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.Chart.Base.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Chart.Windows, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.Chart.Windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Compression.Base, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.Compression.Base.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Core.WinForms, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.Core.WinForms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Data.WinForms, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.Data.WinForms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Diagram.Base, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.Diagram.Base.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Diagram.Windows, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.Diagram.Windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.DocIO.Base, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.DocIO.Base.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.DocIO.Windows, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.DocIO.Windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Edit.Windows, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.Edit.Windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Gauge.Windows, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.Gauge.Windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Grid.Base, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.Grid.Base.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Grid.Grouping.Base, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.Grid.Grouping.Base.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Grid.Grouping.Windows, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.Grid.Grouping.Windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Grid.Windows, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.Grid.Windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.GridCommon.WinForms, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.GridCommon.WinForms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.GridConverter.Windows, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.GridConverter.Windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.GridHelperClasses.Windows, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.GridHelperClasses.Windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Grouping.Base, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.Grouping.Base.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Grouping.Windows, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.Grouping.Windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.HTMLUI.Base, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.HTMLUI.Base.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.HTMLUI.Windows, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.HTMLUI.Windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Linq.Base, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.Linq.Base.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Maps.Windows, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.Maps.Windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.OfficeChart.Base, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.OfficeChart.Base.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Pdf.Base, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.Pdf.Base.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.PdfViewer.Windows, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.PdfViewer.Windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.PivotAnalysis.Base, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.PivotAnalysis.Base.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.PivotAnalysis.Windows, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.PivotAnalysis.Windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.PivotChart.Windows, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.PivotChart.Windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Presentation.Base, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.Presentation.Base.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.ProjIO.Base, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.ProjIO.Base.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Schedule.Base, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.Schedule.Base.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Schedule.Windows, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.Schedule.Windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Scripting.Base, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.Scripting.Base.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.SfBarcode.Windows, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.SfBarcode.Windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.SfDataGrid.WinForms, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.SfDataGrid.WinForms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.SfDataGridConverter.WinForms, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.SfDataGridConverter.WinForms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.SfInput.WinForms, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.SfInput.WinForms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.SfSmithChart.WinForms, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.SfSmithChart.WinForms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Shared.Base, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.Shared.Base.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Shared.Windows, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.Shared.Windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.SpellChecker.Base, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.SpellChecker.Base.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Spreadsheet.Windows, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.Spreadsheet.Windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Tools.Base, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.Tools.Base.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Tools.Windows, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.Tools.Windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.TreeMap.Windows, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.TreeMap.Windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.XlsIO.Base, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.XlsIO.Base.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.XlsIO.Windows, Version=19.1460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.1.0.54\precompiledassemblies\4.6\Syncfusion.XlsIO.Windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Codes\Consts.cs" />
+    <Compile Include="Codes\Future-UI.cs" />
+    <Compile Include="Codes\Tasker.cs" />
+    <Compile Include="Codes\S-Utility.cs" />
+    <Compile Include="Codes\DGView.cs" />
+    <Compile Include="Dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dashboard.Designer.cs">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\Task-Previewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popups\Task-Previewer.designer.cs">
+      <DependentUpon>Task-Previewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Server\S-Actions.cs" />
+    <Compile Include="Server\S-Classes.cs" />
+    <Compile Include="Server\S-Manager.cs" />
+    <EmbeddedResource Include="Dashboard.resx">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popups\Task-Previewer.resx">
+      <DependentUpon>Task-Previewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Spyied-Logo.ico" />
+    <None Include="Resources\Icons\Server.png" />
+    <None Include="Resources\Icons\Settings.png" />
+    <None Include="Resources\CFlags\zw.png" />
+    <None Include="Resources\CFlags\zm.png" />
+    <None Include="Resources\CFlags\za.png" />
+    <None Include="Resources\CFlags\yt.png" />
+    <None Include="Resources\CFlags\ye.png" />
+    <None Include="Resources\CFlags\xk.png" />
+    <None Include="Resources\CFlags\ws.png" />
+    <None Include="Resources\CFlags\wf.png" />
+    <None Include="Resources\CFlags\vu.png" />
+    <None Include="Resources\CFlags\vn.png" />
+    <None Include="Resources\CFlags\vi.png" />
+    <None Include="Resources\CFlags\vg.png" />
+    <None Include="Resources\CFlags\ve.png" />
+    <None Include="Resources\CFlags\vc.png" />
+    <None Include="Resources\CFlags\va.png" />
+    <None Include="Resources\CFlags\uz.png" />
+    <None Include="Resources\CFlags\uy.png" />
+    <None Include="Resources\CFlags\us.png" />
+    <None Include="Resources\CFlags\um.png" />
+    <None Include="Resources\CFlags\ug.png" />
+    <None Include="Resources\CFlags\ua.png" />
+    <None Include="Resources\CFlags\tz.png" />
+    <None Include="Resources\CFlags\tw.png" />
+    <None Include="Resources\CFlags\tv.png" />
+    <None Include="Resources\CFlags\tt.png" />
+    <None Include="Resources\CFlags\tr.png" />
+    <None Include="Resources\CFlags\to.png" />
+    <None Include="Resources\CFlags\tn.png" />
+    <None Include="Resources\CFlags\tm.png" />
+    <None Include="Resources\CFlags\tl.png" />
+    <None Include="Resources\CFlags\tk.png" />
+    <None Include="Resources\CFlags\tj.png" />
+    <None Include="Resources\CFlags\th.png" />
+    <None Include="Resources\CFlags\tg.png" />
+    <None Include="Resources\CFlags\tf.png" />
+    <None Include="Resources\CFlags\td.png" />
+    <None Include="Resources\CFlags\tc.png" />
+    <None Include="Resources\CFlags\sz.png" />
+    <None Include="Resources\CFlags\sy.png" />
+    <None Include="Resources\CFlags\sx.png" />
+    <None Include="Resources\CFlags\sv.png" />
+    <None Include="Resources\CFlags\st.png" />
+    <None Include="Resources\CFlags\ss.png" />
+    <None Include="Resources\CFlags\sr.png" />
+    <None Include="Resources\CFlags\so.png" />
+    <None Include="Resources\CFlags\sn.png" />
+    <None Include="Resources\CFlags\sm.png" />
+    <None Include="Resources\CFlags\sl.png" />
+    <None Include="Resources\CFlags\sk.png" />
+    <None Include="Resources\CFlags\sj.png" />
+    <None Include="Resources\CFlags\si.png" />
+    <None Include="Resources\CFlags\sh.png" />
+    <None Include="Resources\CFlags\sg.png" />
+    <None Include="Resources\CFlags\se.png" />
+    <None Include="Resources\CFlags\sd.png" />
+    <None Include="Resources\CFlags\sc.png" />
+    <None Include="Resources\CFlags\sb.png" />
+    <None Include="Resources\CFlags\sa.png" />
+    <None Include="Resources\CFlags\rw.png" />
+    <None Include="Resources\CFlags\ru.png" />
+    <None Include="Resources\CFlags\rs.png" />
+    <None Include="Resources\CFlags\ro.png" />
+    <None Include="Resources\CFlags\re.png" />
+    <None Include="Resources\CFlags\qa.png" />
+    <None Include="Resources\CFlags\py.png" />
+    <None Include="Resources\CFlags\pw.png" />
+    <None Include="Resources\CFlags\pt.png" />
+    <None Include="Resources\CFlags\ps.png" />
+    <None Include="Resources\CFlags\pr.png" />
+    <None Include="Resources\CFlags\pn.png" />
+    <None Include="Resources\CFlags\pm.png" />
+    <None Include="Resources\CFlags\pl.png" />
+    <None Include="Resources\CFlags\pk.png" />
+    <None Include="Resources\CFlags\ph.png" />
+    <None Include="Resources\CFlags\pg.png" />
+    <None Include="Resources\CFlags\pf.png" />
+    <None Include="Resources\CFlags\pe.png" />
+    <None Include="Resources\CFlags\pa.png" />
+    <None Include="Resources\CFlags\om.png" />
+    <None Include="Resources\CFlags\nz.png" />
+    <None Include="Resources\CFlags\nu.png" />
+    <None Include="Resources\CFlags\nr.png" />
+    <None Include="Resources\CFlags\np.png" />
+    <None Include="Resources\CFlags\no.png" />
+    <None Include="Resources\CFlags\nl.png" />
+    <None Include="Resources\CFlags\ni.png" />
+    <None Include="Resources\CFlags\ng.png" />
+    <None Include="Resources\CFlags\nf.png" />
+    <None Include="Resources\CFlags\ne.png" />
+    <None Include="Resources\CFlags\nc.png" />
+    <None Include="Resources\CFlags\na.png" />
+    <None Include="Resources\CFlags\mz.png" />
+    <None Include="Resources\CFlags\my.png" />
+    <None Include="Resources\CFlags\mx.png" />
+    <None Include="Resources\CFlags\mw.png" />
+    <None Include="Resources\CFlags\mv.png" />
+    <None Include="Resources\CFlags\mu.png" />
+    <None Include="Resources\CFlags\mt.png" />
+    <None Include="Resources\CFlags\ms.png" />
+    <None Include="Resources\CFlags\mr.png" />
+    <None Include="Resources\CFlags\mq.png" />
+    <None Include="Resources\CFlags\mp.png" />
+    <None Include="Resources\CFlags\mo.png" />
+    <None Include="Resources\CFlags\mn.png" />
+    <None Include="Resources\CFlags\mm.png" />
+    <None Include="Resources\CFlags\ml.png" />
+    <None Include="Resources\CFlags\mk.png" />
+    <None Include="Resources\CFlags\mh.png" />
+    <None Include="Resources\CFlags\mg.png" />
+    <None Include="Resources\CFlags\mf.png" />
+    <None Include="Resources\CFlags\me.png" />
+    <None Include="Resources\CFlags\md.png" />
+    <None Include="Resources\CFlags\mc.png" />
+    <None Include="Resources\CFlags\ma.png" />
+    <None Include="Resources\CFlags\ly.png" />
+    <None Include="Resources\CFlags\lv.png" />
+    <None Include="Resources\CFlags\lu.png" />
+    <None Include="Resources\CFlags\lt.png" />
+    <None Include="Resources\CFlags\ls.png" />
+    <None Include="Resources\CFlags\lr.png" />
+    <None Include="Resources\CFlags\lk.png" />
+    <None Include="Resources\CFlags\li.png" />
+    <None Include="Resources\CFlags\lc.png" />
+    <None Include="Resources\CFlags\lb.png" />
+    <None Include="Resources\CFlags\la.png" />
+    <None Include="Resources\CFlags\kz.png" />
+    <None Include="Resources\CFlags\ky.png" />
+    <None Include="Resources\CFlags\kw.png" />
+    <None Include="Resources\CFlags\kr.png" />
+    <None Include="Resources\CFlags\kp.png" />
+    <None Include="Resources\CFlags\kn.png" />
+    <None Include="Resources\CFlags\km.png" />
+    <None Include="Resources\CFlags\ki.png" />
+    <None Include="Resources\CFlags\kh.png" />
+    <None Include="Resources\CFlags\kg.png" />
+    <None Include="Resources\CFlags\ke.png" />
+    <None Include="Resources\CFlags\jp.png" />
+    <None Include="Resources\CFlags\jo.png" />
+    <None Include="Resources\CFlags\jm.png" />
+    <None Include="Resources\CFlags\je.png" />
+    <None Include="Resources\CFlags\it.png" />
+    <None Include="Resources\CFlags\is.png" />
+    <None Include="Resources\CFlags\ir.png" />
+    <None Include="Resources\CFlags\iq.png" />
+    <None Include="Resources\CFlags\ad.png" />
+    <None Include="Resources\CFlags\ae.png" />
+    <None Include="Resources\CFlags\af.png" />
+    <None Include="Resources\CFlags\ag.png" />
+    <None Include="Resources\CFlags\ai.png" />
+    <None Include="Resources\CFlags\al.png" />
+    <None Include="Resources\CFlags\am.png" />
+    <None Include="Resources\CFlags\ao.png" />
+    <None Include="Resources\CFlags\aq.png" />
+    <None Include="Resources\CFlags\ar.png" />
+    <None Include="Resources\CFlags\as.png" />
+    <None Include="Resources\CFlags\at.png" />
+    <None Include="Resources\CFlags\au.png" />
+    <None Include="Resources\CFlags\aw.png" />
+    <None Include="Resources\CFlags\ax.png" />
+    <None Include="Resources\CFlags\az.png" />
+    <None Include="Resources\CFlags\ba.png" />
+    <None Include="Resources\CFlags\bb.png" />
+    <None Include="Resources\CFlags\bd.png" />
+    <None Include="Resources\CFlags\be.png" />
+    <None Include="Resources\CFlags\bf.png" />
+    <None Include="Resources\CFlags\bg.png" />
+    <None Include="Resources\CFlags\bh.png" />
+    <None Include="Resources\CFlags\bi.png" />
+    <None Include="Resources\CFlags\bj.png" />
+    <None Include="Resources\CFlags\bl.png" />
+    <None Include="Resources\CFlags\bm.png" />
+    <None Include="Resources\CFlags\bn.png" />
+    <None Include="Resources\CFlags\bo.png" />
+    <None Include="Resources\CFlags\bq.png" />
+    <None Include="Resources\CFlags\br.png" />
+    <None Include="Resources\CFlags\bs.png" />
+    <None Include="Resources\CFlags\bt.png" />
+    <None Include="Resources\CFlags\bv.png" />
+    <None Include="Resources\CFlags\bw.png" />
+    <None Include="Resources\CFlags\by.png" />
+    <None Include="Resources\CFlags\bz.png" />
+    <None Include="Resources\CFlags\ca.png" />
+    <None Include="Resources\CFlags\cc.png" />
+    <None Include="Resources\CFlags\cd.png" />
+    <None Include="Resources\CFlags\cf.png" />
+    <None Include="Resources\CFlags\cg.png" />
+    <None Include="Resources\CFlags\ch.png" />
+    <None Include="Resources\CFlags\ci.png" />
+    <None Include="Resources\CFlags\ck.png" />
+    <None Include="Resources\CFlags\cl.png" />
+    <None Include="Resources\CFlags\cm.png" />
+    <None Include="Resources\CFlags\cn.png" />
+    <None Include="Resources\CFlags\co.png" />
+    <None Include="Resources\CFlags\cr.png" />
+    <None Include="Resources\CFlags\cu.png" />
+    <None Include="Resources\CFlags\cv.png" />
+    <None Include="Resources\CFlags\cw.png" />
+    <None Include="Resources\CFlags\cx.png" />
+    <None Include="Resources\CFlags\cy.png" />
+    <None Include="Resources\CFlags\cz.png" />
+    <None Include="Resources\CFlags\de.png" />
+    <None Include="Resources\CFlags\dj.png" />
+    <None Include="Resources\CFlags\dk.png" />
+    <None Include="Resources\CFlags\dm.png" />
+    <None Include="Resources\CFlags\do.png" />
+    <None Include="Resources\CFlags\dz.png" />
+    <None Include="Resources\CFlags\ec.png" />
+    <None Include="Resources\CFlags\ee.png" />
+    <None Include="Resources\CFlags\eg.png" />
+    <None Include="Resources\CFlags\eh.png" />
+    <None Include="Resources\CFlags\er.png" />
+    <None Include="Resources\CFlags\es.png" />
+    <None Include="Resources\CFlags\et.png" />
+    <None Include="Resources\CFlags\fi.png" />
+    <None Include="Resources\CFlags\fj.png" />
+    <None Include="Resources\CFlags\fk.png" />
+    <None Include="Resources\CFlags\fm.png" />
+    <None Include="Resources\CFlags\fo.png" />
+    <None Include="Resources\CFlags\fr.png" />
+    <None Include="Resources\CFlags\ga.png" />
+    <None Include="Resources\CFlags\gb.png" />
+    <None Include="Resources\CFlags\gb-eng.png" />
+    <None Include="Resources\CFlags\gb-nir.png" />
+    <None Include="Resources\CFlags\gb-sct.png" />
+    <None Include="Resources\CFlags\gb-wls.png" />
+    <None Include="Resources\CFlags\gd.png" />
+    <None Include="Resources\CFlags\ge.png" />
+    <None Include="Resources\CFlags\gf.png" />
+    <None Include="Resources\CFlags\gg.png" />
+    <None Include="Resources\CFlags\gh.png" />
+    <None Include="Resources\CFlags\gi.png" />
+    <None Include="Resources\CFlags\gl.png" />
+    <None Include="Resources\CFlags\gm.png" />
+    <None Include="Resources\CFlags\gn.png" />
+    <None Include="Resources\CFlags\gp.png" />
+    <None Include="Resources\CFlags\gq.png" />
+    <None Include="Resources\CFlags\gr.png" />
+    <None Include="Resources\CFlags\gs.png" />
+    <None Include="Resources\CFlags\gt.png" />
+    <None Include="Resources\CFlags\gu.png" />
+    <None Include="Resources\CFlags\gw.png" />
+    <None Include="Resources\CFlags\gy.png" />
+    <None Include="Resources\CFlags\hk.png" />
+    <None Include="Resources\CFlags\hm.png" />
+    <None Include="Resources\CFlags\hn.png" />
+    <None Include="Resources\CFlags\hr.png" />
+    <None Include="Resources\CFlags\ht.png" />
+    <None Include="Resources\CFlags\hu.png" />
+    <None Include="Resources\CFlags\id.png" />
+    <None Include="Resources\CFlags\ie.png" />
+    <None Include="Resources\CFlags\il.png" />
+    <None Include="Resources\CFlags\im.png" />
+    <None Include="Resources\CFlags\in.png" />
+    <None Include="Resources\CFlags\io.png" />
+    <None Include="Resources\CFlags\FNull.png" />
+    <Content Include="Resources\IPane\Command.png" />
+    <Content Include="Resources\IPane\Offline.png" />
+    <Content Include="Resources\IPane\Online.png" />
+    <Content Include="Resources\IPane\Task.png" />
+    <Content Include="Resources\IPane\Victim.png" />
+    <None Include="Resources\IPane\Ping.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="EasyTcp">
+      <Version>4.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="EasyTcp.Actions">
+      <Version>4.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.Licensing">
+      <Version>19.2.0.49</Version>
+    </PackageReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
