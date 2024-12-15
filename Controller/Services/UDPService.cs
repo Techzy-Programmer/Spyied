@@ -15,7 +15,7 @@ namespace Controller.Services
         // ToDo: Implement a timeout or expiry mechanism for incomplete entries to prevent Memory leaks
         private readonly static ConcurrentDictionary<int, Tuple<UDPHeader, SlotList<byte[]>>> incomplete = [];
         private static CancellationTokenSource? cancelUDP;
-        private static readonly int headerSize = 32;
+        private static readonly int headerSize = 64;
         private static UdpClient? udpClient;
         private static bool isRunning;
 
@@ -34,6 +34,12 @@ namespace Controller.Services
             else if (toStop == false && !isRunning)
             {
                 udpClient = new UdpClient(11000);
+                udpClient.Client.SetSocketOption(
+                    SocketOptionLevel.Socket,
+                    SocketOptionName.ReceiveBuffer,
+                    1024 * 1024
+                );
+
                 cancelUDP = new CancellationTokenSource();
                 Task.Run(() => ReceiveMessages(cancelUDP.Token));
 
@@ -49,6 +55,8 @@ namespace Controller.Services
                 {
                     var rcvData = await udpClient.ReceiveAsync(cancelTok);
                     var data = rcvData.Buffer;
+
+                    Debug.WriteLine($"Got msg with len: {data.Length}");
 
                     if (data == null || data.Length < headerSize)
                     {
@@ -74,7 +82,7 @@ namespace Controller.Services
                     if (tuple.Item2.AreAllSlotsFilled())
                     {
                         var completeData = tuple.Item2.SelectMany(x => x).ToArray();
-                        msg.Data = completeData;
+                        msg.Data = Decompress(completeData);
 
                         InvokeEvent(msg);
                         incomplete.Remove(msg.UID, out _);
@@ -99,14 +107,17 @@ namespace Controller.Services
 
             var baseMsg = new UDPHeader
             {
+                Data = src,
                 Type = type,
                 UID = br.ReadInt32(),
+                TS = br.ReadUInt64(),
                 Count = br.ReadInt16(),
                 Sequence = br.ReadInt16(),
                 DataSize = br.ReadInt32(),
             };
 
-            baseMsg.Data = Decompress(src[..baseMsg.DataSize]);
+            Debug.WriteLine($"Type-{type} UID-{baseMsg.UID} Count-{baseMsg.Count} Seq-{baseMsg.Sequence}");
+            Debug.WriteLine($"Timestamp {baseMsg.TS}\n");
 
             var msg = type switch
             {
@@ -116,7 +127,7 @@ namespace Controller.Services
                     Y = br.ReadInt32(),
                     Width = br.ReadInt32(),
                     Height = br.ReadInt32(),
-                    Quality = br.ReadInt32(),
+                    Quality = br.ReadInt16(),
                 },
                 _ => baseMsg,
             };
@@ -138,6 +149,7 @@ namespace Controller.Services
             switch (udpHeader)
             {
                 case ScreenFrameMsg screenFrameMsg:
+                    Debug.WriteLine($"Received ScreenFrameMsg: UID-{screenFrameMsg.UID} X-{screenFrameMsg.X} Y-{screenFrameMsg.Y}");
                     ScreenFrameReceived?.Invoke(screenFrameMsg);
                     break;
             }

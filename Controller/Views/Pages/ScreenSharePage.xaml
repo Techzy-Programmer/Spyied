@@ -23,7 +23,7 @@
         </StackPanel>
         <ui:Image
             Stretch="Uniform"
-            x:Name="SSImg"
+            Source="{Binding ViewModel.ScreenBitmap}"
             MaxWidth="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=ScrollViewer}}"
             MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=ScrollViewer}}" />
     </StackPanel>

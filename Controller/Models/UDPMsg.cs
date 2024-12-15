@@ -5,6 +5,7 @@
         public int UID { get; set; }
         public int Type { get; set; }
         public int Count { get; set; }
+        public ulong TS { get; set;  }
         public byte[]? Data { get; set; }
         public int Sequence { get; set; }
         public int DataSize { get; set; }

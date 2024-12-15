@@ -1,4 +1,6 @@
-﻿namespace Controller.ViewModels.Pages
+﻿using Controller.Services;
+
+namespace Controller.ViewModels.Pages
 {
     public partial class DashboardViewModel : ObservableObject
     {
@@ -9,11 +11,9 @@
 
         [RelayCommand]
         private void OnToggleServer() {
-            if (_isRunning)
-            {
-                return;
-            }
-
+            Status = (_isRunning ? "Start" : "Stop") + " Server";
+            UDPService.ToggleUDPService(null);
+            _isRunning = !_isRunning;
         }
     }
 }
