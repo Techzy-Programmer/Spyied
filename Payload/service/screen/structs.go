@@ -15,6 +15,7 @@ type Capturer struct {
 	config    *Config
 	prevFrame []byte
 	seqNum    uint16
+	stopChan  chan struct{}
 	bounds    image.Rectangle
 }
 

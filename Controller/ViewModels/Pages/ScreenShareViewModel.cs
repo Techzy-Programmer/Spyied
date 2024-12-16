@@ -20,14 +20,14 @@ namespace Controller.ViewModels.Pages
 
         public void OnNavigatedFrom()
         {
-            // ToDo: Send stop screen share command
+            TCPService.SendAsync(MSGType.ScreenMSG, new ScreenMSG { DesiredQuality = 0, ToPresent = false });
             UDPService.ScreenFrameReceived -= OnScreenFrameReceived;
             ScreenBitmap = null;
         }
 
         public void OnNavigatedTo()
         {
-            // ToDo: Send start screen share command
+            TCPService.SendAsync(MSGType.ScreenMSG, new ScreenMSG { DesiredQuality = 1, ToPresent = true });
             UDPService.ScreenFrameReceived += OnScreenFrameReceived;
         }
 

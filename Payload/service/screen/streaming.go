@@ -24,9 +24,17 @@ func InitCapturer(config *Config) *Capturer {
 }
 
 func (c *Capturer) CaptureLoop() {
+	c.stopChan = make(chan struct{})
 	frameInterval := time.Second / time.Duration(c.config.TargetFPS)
 
 	for {
+		select {
+		case <-c.stopChan:
+			fmt.Println("Stopping capture loop...")
+			return
+		default:
+		}
+
 		start := time.Now()
 
 		frame, err := c.Captureframe()
@@ -50,6 +58,10 @@ func (c *Capturer) CaptureLoop() {
 			time.Sleep(frameInterval - elapsed)
 		}
 	}
+}
+
+func (c *Capturer) Stop() {
+	close(c.stopChan)
 }
 
 func (c *Capturer) Captureframe() (*frame, error) {
