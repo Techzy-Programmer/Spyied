@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"net"
 	"sync"
+	"time"
 )
 
 type MSGType string
@@ -14,14 +15,27 @@ const (
 
 type MSGHandler func(msgType MSGType, payload interface{})
 
+type ConnectionConfig struct {
+	IP          string
+	Port        int
+	RetryDelay  time.Duration // Delay between reconnection attempts
+	MaxAttempts int           // Max number of attempts per reconnection cycle, -1 for infinite
+}
+
 // A TCP client instance
 type TCPClient struct {
-	conn     net.Conn
-	handler  MSGHandler
-	done     chan struct{}
-	wg       sync.WaitGroup
-	mu       sync.Mutex
-	stopRead bool
+	conn             net.Conn
+	msgHandler       MSGHandler
+	connStateHandler func(isConnected bool)
+	done             chan struct{}
+	wg               sync.WaitGroup
+	mu               sync.Mutex
+	stopRead         bool
+
+	// New fields for connection management
+	config      *ConnectionConfig
+	isConnected bool
+	reconnectCh chan struct{}
 }
 
 type MSG struct {
