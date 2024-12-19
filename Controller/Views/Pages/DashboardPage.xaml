@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:Controller.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    xmlns:models="clr-namespace:Controller.Models"
     Title="DashboardPage"
     d:DataContext="{d:DesignInstance local:DashboardPage, IsDesignTimeCreatable=False}"
     d:DesignHeight="450"
@@ -15,16 +16,52 @@
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     mc:Ignorable="d">
 
-    <Grid VerticalAlignment="Top">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
-
+    <StackPanel VerticalAlignment="Top">
         <ui:Button
             Grid.Column="0"
             Command="{Binding ViewModel.ToggleServerCommand, Mode=OneWay}"
             Content="{Binding ViewModel.Status}"
             Icon="Server16" />
-    </Grid>
+        <ui:ListView
+            MaxHeight="800"
+            d:ItemsSource="{d:SampleData ItemCount=2}"
+            SelectionChanged="ListView_SelectionChanged"
+            ItemsSource="{Binding ViewModel.VictimList, Mode=TwoWay}" >
+            <ui:ListView.ItemTemplate>
+                <DataTemplate DataType="{x:Type models:Victim}">
+                    <Grid Margin="8,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Ellipse
+                            x:Name="Ellipse"
+                            Grid.RowSpan="2"
+                            Width="32"
+                            Height="32"
+                            Margin="6"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Fill="{ui:ThemeResource ControlStrongStrokeColorDefaultBrush}" />
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="12,6,0,0"
+                            FontWeight="Bold"
+                            Text="{Binding Id, Mode=OneWay}" />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="12,0,0,6"
+                            Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}"
+                            Text="{Binding IP, Mode=OneWay}" />
+                    </Grid>
+                </DataTemplate>
+            </ui:ListView.ItemTemplate>
+        </ui:ListView>
+    </StackPanel>
 </Page>

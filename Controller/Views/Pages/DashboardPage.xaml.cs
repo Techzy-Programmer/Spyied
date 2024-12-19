@@ -1,4 +1,6 @@
-﻿using Controller.ViewModels.Pages;
+﻿using Controller.Models;
+using Controller.Services;
+using Controller.ViewModels.Pages;
 using Wpf.Ui.Controls;
 
 namespace Controller.Views.Pages
@@ -13,6 +15,12 @@ namespace Controller.Views.Pages
             DataContext = this;
 
             InitializeComponent();
+        }
+
+        private void ListView_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs _)
+        {
+            var victim = (Victim)((ListView)sender).SelectedItem;
+            TCPService.SetTarget(victim);
         }
     }
 }

